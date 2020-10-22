@@ -19,9 +19,13 @@ class Trivia:
             while True:
                 try:
                     player_choice = int(input("Please choose from the following choices (1 - 4)\n"))
-                    break
                 except ValueError:
                     print("Invalid entry")
+                    continue
+                if player_choice > 4 or player_choice < 1:
+                    print("Invalid entry")
+                    continue
+                break
             player_choice = list_of_answers[player_choice - 1]
             correct_answer = list(value.keys())[0]
             if player_choice == correct_answer:
@@ -45,7 +49,7 @@ class Trivia:
             print("Draw")
         elif self.__player_1.get_player_points() > self.__player_2.get_player_points():
             print(
-                f"{self.__player_1.get_player_name().title()} wins by {self.__player_1.get_player_points() - self.__player_2.get_player_points()} points.")
+                f"{self.__player_1.get_player_name().title()} wins!")
         else:
             print(
-                f"{self.__player_2.get_player_name().title()} wins by {self.__player_2.get_player_points() - self.__player_1.get_player_points()} points.")
+                f"{self.__player_2.get_player_name().title()} wins!")
